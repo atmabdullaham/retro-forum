@@ -54,7 +54,7 @@ const displayAllPost = (posts) => {
       </div>
      
 <div class = "opacity-100">
-<button id ="addToList"
+<button id ="addToList" onclick = "markAsRead('${post.description}', '${post.view_count}')"
 data-post='${JSON.stringify(post)}' class = "addToList btn btn-circle bg-green-500 btn-sm">
 <i class = "fa-solid fa-envelope-open text-white"></i>
  </button>
@@ -69,6 +69,23 @@ data-post='${JSON.stringify(post)}' class = "addToList btn btn-circle bg-green-5
  });
 }
 
+const markAsRead = (description, view_count) => {
+ const markAsReadContainer = document.getElementById("markAsReadContainer");
+ const div = document.createElement("div");
+ div.innerHTML = `
+ <div class = "flex justify-between p-2 lg:p-3 bg-white rounded-2xl items-center gap-3">
+            <div class = "lg:w-4/5 w-11/12 ">
+            <p>
+            ${description}
+            </p>
+            </div>
+            <div class = "lg:w-1/5 w-4/12 flex justify-end">
+              <p><i class = "fa-regular fa-eye"></i>${view_count}</p>
+              </div>
+              </div>
+ `
+ markAsReadContainer.appendChild(div);
+}
 
 loadAllPosts();
 const handleSearchByCategory = () => {
