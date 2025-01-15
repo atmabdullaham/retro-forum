@@ -85,7 +85,17 @@ const markAsRead = (description, view_count) => {
               </div>
  `
  markAsReadContainer.appendChild(div);
+ handleCount()
 }
+
+const handleCount = () => {
+ const preCount = document.getElementById("markAsReadCounter").innerText;
+ const convertedCounter = parseInt(preCount);
+ const sum = convertedCounter + 1;
+ document.getElementById("markAsReadCounter").innerText = sum
+}
+
+
 
 loadAllPosts();
 const handleSearchByCategory = () => {
